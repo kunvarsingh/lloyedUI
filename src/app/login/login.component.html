@@ -1,0 +1,126 @@
+<!-- <p>
+  login works!
+</p> -->
+
+
+<div class="container">
+  <!-- Trigger the modal with a button -->
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>lloydsventures.com</h3>
+        </div>
+        <div class="content"><h1 class="h3 mb-3 text-basic font-weight-bold">Login</h1></div>
+
+    <form class="form-signin" [formGroup]="loginForm" (submit)="login()" (keydown)="keyDownFunction($event)" style="margin-left: 25%">
+      <label for="inputEmail" class="sr-only">Email</label>
+      <input type="text" id="inputEmail" class="form-control mt-3" placeholder="Email" required="" autofocus="" formControlName="email">
+      <div class="small" *ngIf="!loginForm.controls['email'].valid&&loginForm.controls['email'].dirty" class="redlabe">
+        <span *ngIf="loginForm.controls['email'].errors['required']" class="small redlabe text-danger"> Email cannot be left blank</span>
+        <span *ngIf="loginForm.controls['email'].errors['pattern']" class="small redlabe text-danger">Email must be valid</span>
+      </div>
+
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control mt-3" placeholder="Password" required="" formControlName="password">
+      <div class="small" *ngIf="!loginForm.controls['password'].valid&&loginForm.controls['password'].dirty" class="redlabe">
+        <span *ngIf="loginForm.controls['password'].errors['required']" class="small redlabe text-danger">Password cannot be left blank</span>
+        <span *ngIf="loginForm.controls['password'].errors['minlength']" class="small redlabe text-danger">password must be atleast 6 characters</span>
+        <span *ngIf="loginForm.controls['password'].errors['pattern']&&!loginForm.controls['password'].errors['minlength']" class="small redlabe text-danger">Password must contain at least 6 characters including 1 uppercase and 1 lowercase letter, 1 special character and 1 number</span>
+      </div>
+      <br>
+    </form>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+          <button type="button" class="btn btn-primary" (click)="register()">Register</button>
+          <button type="button" class="btn btn-primary" (click)="login()">Login</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+ <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Edit Company</h4>
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <button type="button" class="close" (click)="close()">&times;</button>
+      </div>
+
+  <form class="form-signin card" [formGroup]="companyForm">
+
+     <div class="row">
+    <div class="col-sm-4">first Name<span class="mandatory_labl">*</span></div>
+    <div class="col-sm-8">  <input type="text" class="form-control mt-3" required="" autofocus="" formControlName="first_name"> </div>
+    <div class="small" *ngIf="!companyForm.controls['first_name'].valid&&companyForm.controls['first_name'].dirty" class="redlabe">
+        <span *ngIf="companyForm.controls['first_name'].errors['required']" class="small redlabe text-danger">first_name cannot be left blank</span>
+      </div>
+  </div>
+
+ <div class="row">
+    <div class="col-sm-4">last Name<span class="mandatory_labl">*</span></div>
+    <div class="col-sm-8">  <input type="text" class="form-control mt-3" required="" autofocus="" formControlName="last_name"> </div>
+    <div class="small" *ngIf="!companyForm.controls['last_name'].valid&&companyForm.controls['last_name'].dirty" class="redlabe">
+        <span *ngIf="companyForm.controls['last_name'].errors['required']" class="small redlabe text-danger">last_name cannot be left blank</span>
+      </div>
+  </div>
+
+   <div class="row">
+    <div class="col-sm-4">company Name<span class="mandatory_labl">*</span></div>
+    <div class="col-sm-8">  <input type="text" class="form-control mt-3" required="" autofocus="" formControlName="company_name"> </div>
+    <div class="small" *ngIf="!companyForm.controls['company_name'].valid&&companyForm.controls['company_name'].dirty" class="redlabe">
+        <span *ngIf="companyForm.controls['company_name'].errors['required']" class="small redlabe text-danger">company_name cannot be left blank</span>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">Email Name<span class="mandatory_labl">*</span></div>
+    <div class="col-sm-8">  <input type="text" class="form-control mt-3" required="" autofocus="" formControlName="email"> </div>
+    <div class="small" *ngIf="!companyForm.controls['email'].valid&&companyForm.controls['email'].dirty" class="redlabe">
+        <span *ngIf="companyForm.controls['email'].errors['required']" class="small redlabe text-danger">email cannot be left blank</span>
+      </div>
+  </div>
+
+   <div class="row">
+    <div class="col-sm-4">license_start_date<span class="mandatory_labl">*</span></div>
+    <div class="col-sm-8">  <input type="text" class="form-control mt-3" required="" autofocus="" formControlName="license_start_date"  disabled="true"> </div>
+    <div class="small" *ngIf="!companyForm.controls['license_start_date'].valid&&companyForm.controls['license_start_date'].dirty" class="redlabe">
+        <span *ngIf="companyForm.controls['license_start_date'].errors['required']" class="small redlabe text-danger">license_start_date cannot be left blank</span>
+      </div>
+  </div>
+
+
+   <div class="row">
+    <div class="col-sm-4">license_end_date<span class="mandatory_labl">*</span></div>
+    <div class="col-sm-8">  <input type="text" class="form-control mt-3" required="" autofocus="" formControlName="license_end_date" disabled="true"> </div>
+    <div class="small" *ngIf="!companyForm.controls['license_end_date'].valid&&companyForm.controls['license_end_date'].dirty" class="redlabe">
+        <span *ngIf="companyForm.controls['license_end_date'].errors['required']" class="small redlabe text-danger">license_end_date cannot be left blank</span>
+      </div>
+  </div>
+ </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="register()">Register</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
