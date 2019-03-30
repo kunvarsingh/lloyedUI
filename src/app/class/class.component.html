@@ -16,6 +16,7 @@
     <tr>
       <th class="greyTd">First Name</th>
       <th class="greyTd">Last Name</th>
+      <th class="greyTd">Company Name</th>
       <th class="greyTd">Email</th>
       <th class="greyTd">status</th>
       <th class="greyTd">Created At</th>
@@ -31,6 +32,7 @@
       <!-- <td>{{i+1}}</td> -->
       <td>{{item.first_name ? item.first_name : '--'}}</td>
       <td>{{item.last_name ? item.last_name : '--'}}</td>
+      <td>{{item.company_name ? item.company_name : '--'}}</td>
       <td>{{item?.Email ? item?.Email : '--'}}</td>
       <td>{{item?.company_license ? item?.company_license : '--'}}</td>
       <td>{{item.CreatedAt ? item.CreatedAt : '--'}}</td> 
@@ -85,7 +87,7 @@
 
   <div class="row">
     <div class="col-sm-4">Email Name<span class="mandatory_labl">*</span></div>
-    <div class="col-sm-8">  <input type="text" class="form-control mt-3" required="" autofocus="" formControlName="email"> </div>
+    <div class="col-sm-8">  <input type="text" class="form-control mt-3" required="" autofocus="" formControlName="email" disabled="true"> </div>
     <div class="small" *ngIf="!companyForm.controls['email'].valid&&companyForm.controls['email'].dirty" class="redlabe">
         <span *ngIf="companyForm.controls['email'].errors['required']" class="small redlabe text-danger">email cannot be left blank</span>
       </div>

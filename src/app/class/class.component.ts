@@ -82,8 +82,9 @@ export class ClassComponent implements OnInit {
   updateCompany(){
      this.loading = true;
     let url = this.globalService.basePath+"user/editCompany";
+    if(this.companyForm.valid){
      this.globalService.PutRequest(url,{companyId : this.companyDetails._id,license_start_date : this.companyForm.value.license_start_date,
-       license_end_date : this.companyForm.value.license_end_date}).subscribe(response=>{
+       license_end_date : this.companyForm.value.license_end_date,value : this.companyForm.value}).subscribe(response=>{
       if(response[0].status===200){
         this.loading = false;
         this.globalService.showNotification(JSON.parse(response[0].json._body).message,2);
@@ -94,5 +95,11 @@ export class ClassComponent implements OnInit {
         this.globalService.showNotification(response[0].json.message,4);
       }
     });
+     }else{
+       this.globalService.showNotification('Please fill form values!',4);
+     }
+
   }
+
+
 }
